@@ -1,26 +1,220 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-surface: #fff8f7;
+  --color-surface-dim: #e8d6d8;
+  --color-surface-bright: #fff8f7;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff0f2;
+  --color-surface-container: #fce9ec;
+  --color-surface-container-high: #f6e4e6;
+  --color-surface-container-highest: #f0dee1;
+  --color-surface-variant: #f0dee1;
+  --color-on-surface: #22191b;
+  --color-on-surface-variant: #544243;
+  --color-inverse-surface: #382e30;
+  --color-inverse-on-surface: #ffecef;
+  --color-outline: #877273;
+  --color-outline-variant: #d9c1c1;
+  --color-surface-tint: #96444e;
+
+  --color-primary: #410310;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #5e1924;
+  --color-on-primary-container: #df7e87;
+  --color-inverse-primary: #ffb2b8;
+  --color-primary-fixed: #ffdadb;
+  --color-primary-fixed-dim: #ffb2b8;
+  --color-on-primary-fixed: #3f020f;
+  --color-on-primary-fixed-variant: #792d37;
+
+  --color-secondary: #775a19;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fed488;
+  --color-on-secondary-container: #785a1a;
+  --color-secondary-fixed: #ffdea5;
+  --color-secondary-fixed-dim: #e9c176;
+  --color-on-secondary-fixed: #261900;
+  --color-on-secondary-fixed-variant: #5d4201;
+
+  --color-tertiary: #231c0c;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #39311f;
+  --color-on-tertiary-container: #a49981;
+  --color-tertiary-fixed: #eee1c7;
+  --color-tertiary-fixed-dim: #d2c5ac;
+  --color-on-tertiary-fixed: #211b0b;
+  --color-on-tertiary-fixed-variant: #4e4633;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-background: #fff8f7;
+  --color-on-background: #22191b;
+
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.75rem;
+  --spacing-space-xl: 3rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-sm: 1rem;
+  --spacing-gutter-lg: 2.5rem;
+  --spacing-margin: 2rem;
+  --spacing-margin-sm: 1.25rem;
+  --spacing-margin-lg: 4rem;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-signature: "Playfair Display", Georgia, serif;
+  --font-headline-lg: "Playfair Display", Georgia, serif;
+  --font-headline-md: "Playfair Display", Georgia, serif;
+  --font-headline-sm: "Playfair Display", Georgia, serif;
+  --font-body-lg: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-body-md: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-body-sm: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-label-md: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-label-sm: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: #fff8f7;
+    background-image:
+      radial-gradient(ellipse at 50% -10%, rgba(197, 160, 89, 0.09), transparent 46%),
+      radial-gradient(ellipse at 100% 100%, rgba(94, 25, 36, 0.035), transparent 34%);
+    color: #22191b;
+    font-family: var(--font-body-md);
+    text-rendering: optimizeLegibility;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Typography size classes matching design specification */
+.text-display {
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+@media (max-width: 640px) {
+  .text-display {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -0.01em;
+  }
+}
+.text-headline-lg {
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+}
+@media (max-width: 640px) {
+  .text-headline-lg {
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: 0em;
+  }
+}
+.text-headline-md {
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: 0em;
+  font-weight: 500;
+}
+.text-headline-sm {
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: 0em;
+  font-weight: 600;
+}
+.text-signature {
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+.text-body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+.text-body-md {
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.text-body-sm {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.text-label-md {
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+.text-label-sm {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.card-enter {
+  animation: card-in 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes foil-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(197, 160, 89, 0);
+  }
+}
+
+.card-live {
+  animation: foil-pulse 1.4s ease-out 2;
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
 }
